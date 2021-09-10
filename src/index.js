@@ -4,9 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import the tool to create the store from Redux
+import { createStore } from 'redux';
+// Import the provider to connect the store with the react app
+import { Provider } from 'react-redux'; 
+// Import the reducer
+import rootReducer from './reducers/reducers';
+
+// Create the store
+const store = createStore(rootReducer)
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* The Provider is a component that is going to surround the <App />, and it will receive the the data from "store" */}
+    <Provider store={store}> <App /> </Provider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

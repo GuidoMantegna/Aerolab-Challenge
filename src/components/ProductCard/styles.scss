@@ -1,0 +1,118 @@
+@use '../../assets/styles/colors';
+
+.flip-card {
+    background-color: transparent;
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:focus {
+    outline: 0;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus .flip-card-inner{
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    color: black;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 60%;
+        width: auto;
+    }
+  }
+  
+  .flip-card-back {
+    color: white;
+    transform: rotateY(180deg);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    p {
+      color: rgb(190, 150, 150);
+      position: absolute;
+      font-style: italic;
+      font-weight: 300;
+      top: 7.5px;
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      opacity: 50%;
+      z-index: -1;
+    }
+  }
+  
+  .prod-category {
+    margin-top: 0;
+    color: rgb(170, 170, 170);
+    align-self: flex-start;
+    font-style: italic;
+    font-weight: 300;
+  }
+  .prod-title {
+    margin: 2px;
+    font-weight: bold;
+    color: rgb(100, 100, 100);
+    letter-spacing: 1px;
+  }
+  .prod-cost {
+    margin: 0;
+    font-weight: bold;
+    color: colors.$gold;
+  }
+
+  .buy-btn {
+    padding: 15px;
+    background-color: rgba(219, 195, 144, 0.75);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.5);
+    transition: all .25s;
+  }
+
+  .buy-btn:hover {
+    background-color: rgb(219, 195, 144);
+    letter-spacing: 1px;
+  }
+

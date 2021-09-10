@@ -1,0 +1,83 @@
+@use '../../assets/styles/colors';
+
+nav {
+    height: 60px;
+    border-top: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
+    box-shadow: 0 4px 8px rgba(80, 80, 80, .1);
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.logo {
+    position: absolute;
+    left: 10px;
+    bottom: -10%;
+    background-image: url('../../assets/img/aerolab-logo.png');
+    background-position: center;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 1px 2px colors.$soft-shadow;
+}
+
+.nav-icon-container {
+    position: relative;
+    margin-right: 35px;
+
+    label {
+        position: absolute;
+        left: 80%;
+        color: #6b6b6b;
+        font-weight: bold;
+        top: -12px;
+        background-color: #f9ec00;
+        min-width: 20px;
+        justify-content: center;
+        padding: 6px 3px;
+        font-size: 0.65em;
+        display: flex;
+        border-radius: 50%;
+    }
+}
+.nav-icon {
+    color: rgb(107, 107, 107);
+    font-size: 1.25em;
+}
+.nav-link {
+    color:rgb(107, 107, 107);
+    margin-right: 20px;
+    padding: 3px 0;
+    position: relative;
+    overflow: hidden;
+}
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: colors.$title;
+    transform: translateX(-110%);
+    transition: all .5s;
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+@media screen and (min-width: 768px) {
+    nav {
+        padding-right: 30px;
+    }
+    .logo {
+        left: 50px;
+        bottom: -15%;
+        width: 150px;
+        height: 150px;
+        box-shadow: 0px 1px 15px rgba(60, 60, 60, .1)
+    }
+}
