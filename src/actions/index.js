@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const fetchProducts = () => {
-  // Now instead of return an object, we can return a function
-    return (dispatch, getState) => { //it takes to parameters: the dispatch method, and getState
+    return (dispatch, getState) => {
+      dispatch(statusPending())
       axios.get('https://coding-challenge-api.aerolab.co/products', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -13,16 +13,36 @@ export const fetchProducts = () => {
             .then(function (response) {
                 const products = response.data
                 dispatch(getProducts(products))
+                dispatch(statusResolved())
             })
             .catch(function (error) {
-                console.log(error);
+                dispatch(statusRejected(error));
             });
     }
   }
 
-  export const getProducts = (products) => {
-    return {
-      type: 'GET_PRODUCTS',
-      payload: products
-    }
+export const getProducts = (products) => {
+  return {
+    type: 'GET_PRODUCTS',
+    payload: products
   }
+}
+
+export const statusPending = () => {
+  return {
+    type: "PENDING"
+  }
+}
+
+export const statusResolved = () => {
+  return {
+    type: "RESOLVED"
+  }
+}
+
+export const statusRejected = error => {
+  return {
+    type: "REJECTED",
+    payload: error
+  }
+}

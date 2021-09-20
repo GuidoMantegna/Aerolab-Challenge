@@ -14,6 +14,7 @@ const Home = ({ }) => {
     }, [])
     
     const products = useSelector(state => state.productsReducer.products);
+    const status = useSelector(state => state.statusReducer.status);
     return (
         <>
         <div className="sorting-panel">
@@ -22,14 +23,17 @@ const Home = ({ }) => {
             <button className="btn-disable">highest</button>
         </div>
         <ul className="product-list">
+            {status === "PENDING" && <p>LOADING 🕘</p>}
+            {status === "REJECTED" && <p>REJECTED ❌</p>}
             {
-                products && products.map(product => {
-                    const {category, name, cost, img, _id} = product;
-                    return (
-                        <li key={_id}>
-                            <ProductCard category={category} title={name} cost={cost} img={img.url}/>
-                        </li> 
-                    )
+                ((status === "RESOLVED" || status === "IDLE") && products) && 
+                    products.map(product => {
+                        const {category, name, cost, img, _id} = product;
+                        return (
+                            <li key={_id}>
+                                <ProductCard category={category} title={name} cost={cost} img={img.url}/>
+                            </li> 
+                        )
                 })
             }
         </ul>

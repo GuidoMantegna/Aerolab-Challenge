@@ -1,5 +1,5 @@
 const initState = {
-    loading: false,
+    status: 'idle',
     products: [], 
     error: null
 };

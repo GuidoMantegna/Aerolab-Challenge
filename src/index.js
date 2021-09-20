@@ -4,16 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// Import the tool to create the store from Redux
+// REDUX TOOLS
 import { createStore, applyMiddleware, compose } from 'redux';
-// Import the provider to connect the store with the react app
+// PROVIDER
 import { Provider } from 'react-redux'; 
-// Import the reducer
+// REDUCERS
 import rootReducer from './reducers';
+// MIDDLEWARES
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 const composedEnhancer = compose(
-  applyMiddleware(thunk),
+  applyMiddleware(thunk, logger),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 // Create the store
