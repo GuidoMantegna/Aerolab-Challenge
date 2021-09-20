@@ -63,10 +63,10 @@
     position: relative;
 
     p {
-      color: rgb(190, 150, 150);
+      color: colors.$red;
       position: absolute;
       font-style: italic;
-      font-weight: 300;
+      // font-weight: 300;
       top: 7.5px;
     }
 
@@ -112,7 +112,7 @@
   }
 
   .buy-btn:hover {
-    background-color: rgb(219, 195, 144);
+    background-color: colors.$light-blue;
     letter-spacing: 1px;
   }
 

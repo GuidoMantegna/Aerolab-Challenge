@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
 
 // Import the "connect" function to get the data from the store. 
 import { connect } from 'react-redux';
 /// Import the action
-import { deletePost } from './actions/postActions';
+// import { deletePost } from './actions';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -19,7 +18,7 @@ library.add(fab, faCoins, faShoppingCart);
 
 class App extends Component {
   render() {
-    const { posts, deletePost } = this.props
+    const { posts } = this.props
     return (
       <>
         <Layout>
@@ -58,13 +57,14 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 // MAP DISPATCH TO PROPS = This func. takes one parameter: the dispatch method.
-const mapDispatchToProps = dispatch => {
-  return {
-    /* Previously
-    deletePost: id => { dispatch({type: 'DELETE_POST', id: id})  } */
-    /* Now, with the imported action */
-    deletePost: id => { dispatch(deletePost(id))  }
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     /* Previously
+//     deletePost: id => { dispatch({type: 'DELETE_POST', id: id})  } */
+//     /* Now, with the imported action */
+//     deletePost: id => { dispatch(deletePost(id))  }
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App

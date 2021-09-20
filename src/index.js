@@ -5,19 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Import the tool to create the store from Redux
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 // Import the provider to connect the store with the react app
 import { Provider } from 'react-redux'; 
 // Import the reducer
-import rootReducer from './reducers/reducers';
+import rootReducer from './reducers';
+import thunk from 'redux-thunk';
 
+const composedEnhancer = compose(
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 // Create the store
-const store = createStore(rootReducer)
+const store = createStore(
+  rootReducer, 
+  composedEnhancer
+  )
 
 ReactDOM.render(
   <React.StrictMode>
     {/* The Provider is a component that is going to surround the <App />, and it will receive the the data from "store" */}
-    <Provider store={store}> <App /> </Provider> 
+    <Provider store={store}> 
+      <App /> 
+    </Provider> 
   </React.StrictMode>,
   document.getElementById('root')
 );
