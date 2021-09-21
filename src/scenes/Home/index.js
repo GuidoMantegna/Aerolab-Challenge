@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../actions';
+import { fetchProducts, fetchUser } from '../../actions';
 // import { connect } from 'react-redux';
 import './styles.scss';
 
@@ -11,6 +11,7 @@ const Home = ({ }) => {
     
     useEffect(() => {
         dispatch(fetchProducts())
+        dispatch(fetchUser())
     }, [])
     
     const products = useSelector(state => state.productsReducer.products);

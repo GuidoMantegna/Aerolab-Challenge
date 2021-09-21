@@ -1,6 +1,7 @@
 const initState = {
     status: 'IDLE',
-    products: [], 
+    // products: [], 
+    // user: {},
     error: null
 };
 

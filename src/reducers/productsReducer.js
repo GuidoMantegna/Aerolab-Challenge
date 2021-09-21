@@ -1,7 +1,8 @@
 const initState = {
-    status: 'idle',
+    // status: 'idle',
     products: [], 
-    error: null
+    // user: {},
+    // error: null
 };
 
 const productsReducer = (state = initState, action) => {
