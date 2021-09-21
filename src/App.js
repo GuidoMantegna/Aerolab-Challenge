@@ -26,24 +26,10 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/user" component={UserPanel} />
+              <Route exact path="/:user" component={UserPanel} />
             </Switch>
           </BrowserRouter>
         </Layout>
-        {/* <div>
-          <ul>
-            {posts.map(post => {
-              return(
-                <li key={post.id}>
-                  <h3>{post.title}</h3>
-                  <p>{post.body}</p>
-                  <button onClick={() => {deletePost(post.id)}}>Delete post</button>
-                </li>
-              )
-            })}
-          </ul>
-        </div> */}
-
       </>
     );
   }

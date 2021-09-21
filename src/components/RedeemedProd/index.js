@@ -2,13 +2,13 @@ import React from 'react';
 import './styles.scss';
 import prodImg from '../../assets/img/zapatillas.jpg';
 
-const RedeemedProd = () => {
+const RedeemedProd = ({ img, name, cost }) => {
     return (
-        <li className="redeemed-prod">
-            <img src={prodImg} alt="product"></img>
-            <h5 className="prod-title">Nike N95 Air</h5>
-            <h5 className="prod-cost">200</h5>
-        </li>
+        <>
+            <img src={img} alt="product"></img>
+            <h5 className="prod-title">{name}</h5>
+            <h5 className="prod-cost">{cost}</h5>
+        </>
     );
 };
 

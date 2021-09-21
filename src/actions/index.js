@@ -20,6 +20,26 @@ export const fetchProducts = () => {
             });
     }
   }
+  export const fetchHistory = () => {
+    return (dispatch, getState) => {
+      dispatch(statusPending)
+      axios.get('https://coding-challenge-api.aerolab.co/user/history', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTQwYWY4NjcwYjY0YTAwMjE4YTQ1OWEiLCJpYXQiOjE2MzE2MjkxOTB9.bVdWQdLhGQhQaSaU4mSueNr1ZIIV8j3YHe3AZ-wcXmQ'
+                }
+            })
+            .then(response => {
+                const products = response.data
+                dispatch(getRedeemProducts(products))
+                dispatch(statusResolved)
+            })
+            .catch(error => {
+                dispatch(statusRejected(error));
+            });
+    }
+  }
 
 export const fetchUser = () => {
   return (dispatch, getState) => {
@@ -42,7 +62,7 @@ export const fetchUser = () => {
   }
 }
 
-export const fetchPoints = (num = 1000) => {
+export const fetchPoints = (num) => {
   return (dispatch, getState) => {
     dispatch(statusPending)
     axios.post('https://coding-challenge-api.aerolab.co/user/points', { amount: num }, {
@@ -62,9 +82,38 @@ export const fetchPoints = (num = 1000) => {
   }
 }
 
+export const fetchItem = (num) => {
+  return (dispatch, getState) => {
+    dispatch(statusPending)
+    axios.post('https://coding-challenge-api.aerolab.co/redeem', { productId: num }, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTQwYWY4NjcwYjY0YTAwMjE4YTQ1OWEiLCJpYXQiOjE2MzE2MjkxOTB9.bVdWQdLhGQhQaSaU4mSueNr1ZIIV8j3YHe3AZ-wcXmQ',
+          },
+        })
+          .then(response => {
+              console.log(response)
+              // dispatch(getPoints(num))
+              dispatch(statusResolved)
+          })
+          .catch(error => {
+              dispatch(statusRejected(error));
+              
+          });
+  }
+}
+
 export const getProducts = (products) => {
   return {
     type: 'GET_PRODUCTS',
+    payload: products
+  }
+}
+
+export const getRedeemProducts = (products) => {
+  return {
+    type: 'GET_REDEEM_PRODUCTS',
     payload: products
   }
 }

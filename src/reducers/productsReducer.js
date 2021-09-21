@@ -1,6 +1,7 @@
 const initState = {
     // status: 'idle',
     products: [], 
+    redeemedProducts: [],
     // user: {},
     // error: null
 };
@@ -11,6 +12,11 @@ const productsReducer = (state = initState, action) => {
             return {
                 ...state,
                 products: action.payload
+            }
+        case "GET_REDEEMED_PRODUCTS":     
+            return {
+                ...state,
+                redeemedProducts: action.payload
             }
         default: 
             return state

@@ -32,7 +32,7 @@ const Home = ({ }) => {
                         const {category, name, cost, img, _id} = product;
                         return (
                             <li key={_id}>
-                                <ProductCard category={category} title={name} cost={cost} img={img.url}/>
+                                <ProductCard category={category} title={name} cost={cost} img={img.url} id={_id}/>
                             </li> 
                         )
                 })
