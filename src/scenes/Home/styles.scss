@@ -20,6 +20,12 @@
     }
 }
 
+.sorting-btn {
+    background-color: colors.$purple;
+    font-weight: 300;
+    padding: 7px;
+    transition: all .25s;
+}
 .btn-active {
     background-color: colors.$light-blue;
     text-shadow: 1px 2px colors.$title;
@@ -27,11 +33,6 @@
     font-weight: bold;
     box-shadow: 3px 2px #0097ce;
     letter-spacing: 1px;
-}
-.btn-disable {
-    background-color: colors.$purple;
-    font-weight: 300;
-    padding: 7px;
 }
 
 .product-list {

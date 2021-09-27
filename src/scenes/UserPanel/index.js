@@ -31,9 +31,9 @@ const UserPanel = () => {
                     redeemHistory.map(item => {
 
                         return (
-                            <li className="redeemed-prod" key={item._id}>
-                                <RedeemedProd img={item.img.url} name={item.name} cost={item.cost} />
-                            </li>
+                            
+                                <RedeemedProd img={item.img.url} name={item.name} cost={item.cost} id={item.id} />
+                            
                         )
                     })
                 }

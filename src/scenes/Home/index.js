@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../../components/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts, fetchUser } from '../../actions';
-// import { connect } from 'react-redux';
+import { fetchProducts, sortProducts } from '../../actions';
 import './styles.scss';
 
 const Home = ({ }) => {
@@ -11,17 +10,32 @@ const Home = ({ }) => {
     
     useEffect(() => {
         dispatch(fetchProducts())
-        dispatch(fetchUser())
+        
     }, [])
     
     const products = useSelector(state => state.productsReducer.products);
     const status = useSelector(state => state.statusReducer.status);
+
+    const handleCLick = (e) => {
+        const {textContent, classList, nextSibling, previousSibling} = e.target
+
+        if (textContent === "lowest") {
+            dispatch(sortProducts('lowest'))
+            nextSibling.classList.remove("btn-active")            
+        } else {
+            dispatch(sortProducts('highest'))
+            previousSibling.classList.remove("btn-active") 
+        }
+        classList.add("btn-active")
+        
+    }
+
     return (
         <>
         <div className="sorting-panel">
             <p>Sort by:</p>
-            <button className="btn-active">lowest</button>
-            <button className="btn-disable">highest</button>
+            <button className="sorting-btn" onClick={handleCLick}>lowest</button>
+            <button className="sorting-btn" onClick={handleCLick}>highest</button>
         </div>
         <ul className="product-list">
             {status === "PENDING" && <p>LOADING 🕘</p>}
