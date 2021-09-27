@@ -61,9 +61,13 @@
 
     button {
         background-color: white;
-        color: colors.$gold;
+        color: #a08e67;
         font-size: 1.2em;
-        border: none;
+        margin-left: 10px;
+        border: 1px solid;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
         cursor: pointer;
     }
 }

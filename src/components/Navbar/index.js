@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchUser } from '../../actions';
+import { fetchHistory, fetchUser } from '../../actions';
 import './styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,13 +8,14 @@ import { useDispatch, useSelector } from 'react-redux';
 const Navbar = ({ children }) => {
 
     const dispatch = useDispatch()
-    const points = useSelector(state => state.userReducer.user.points)
-    const redeemProd = useSelector(state => state.userReducer.user.redeemHistory)
-
+    
     useEffect(() => {
         dispatch(fetchUser())
+        dispatch(fetchHistory())
     }, [])
-
+    
+    const points = useSelector(state => state.userReducer.user.points)
+    const redeemProd = useSelector(state => state.userReducer.user.redeemHistory)
 
     return (
         <>

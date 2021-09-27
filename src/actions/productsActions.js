@@ -2,10 +2,11 @@ import axios from 'axios';
 import { statusPending, statusResolved, statusRejected, headers } from '.';
 
 // ACTIONS
-export const getProducts = (products) => {
+export const getProducts = (products, qty) => {
     return {
         type: 'GET_PRODUCTS',
-        payload: products
+        payload: products, 
+        qty
     }
   }
   
@@ -36,7 +37,7 @@ export const fetchProducts = () => {
       dispatch(statusPending)
 
       axios.get('https://coding-challenge-api.aerolab.co/products', {
-            headers: headers()
+            headers: headers(),
         })
         .then(response => {
             const products = response.data
