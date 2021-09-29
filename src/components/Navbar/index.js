@@ -12,7 +12,7 @@ const Navbar = ({ children }) => {
     useEffect(() => {
         dispatch(fetchUser())
         dispatch(fetchHistory())
-    }, [])
+    }, [dispatch])
     
     const points = useSelector(state => state.userReducer.user.points)
     const redeemProd = useSelector(state => state.productsReducer.redeemedProducts)

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchHistory, fetchPoints, getPoints } from '../../actions';
+import { fetchHistory, fetchPoints } from '../../actions';
 import RedeemedProd from '../../components/RedeemedProd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,7 +14,7 @@ const UserPanel = () => {
 
     useEffect(() => {
         dispatch(fetchHistory())
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="redeemed-products">

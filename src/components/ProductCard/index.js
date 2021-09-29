@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import { fetchItem } from '../../actions';
-import axios from 'axios';
-
 
 const ProductCard = ({category, title, cost, img, id}) => {
 

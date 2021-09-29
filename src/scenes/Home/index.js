@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, sortProducts } from '../../actions';
 import './styles.scss';
 
-const Home = ({ }) => {
+const Home = () => {
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.productsReducer.products);
@@ -12,7 +12,7 @@ const Home = ({ }) => {
     
     useEffect(() => {
         dispatch(fetchProducts());
-    }, [])
+    }, [dispatch])
     
     const [page, setPage] = useState(1);
 

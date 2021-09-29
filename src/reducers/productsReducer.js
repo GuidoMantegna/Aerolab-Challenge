@@ -1,5 +1,3 @@
-import { sortProducts } from "../actions";
-
 const initState = {
     products: [],
     redeemedProducts: [],
