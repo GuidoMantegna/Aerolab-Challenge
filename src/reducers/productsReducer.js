@@ -1,11 +1,8 @@
 import { sortProducts } from "../actions";
 
 const initState = {
-    // status: 'idle',
     products: [],
     redeemedProducts: [],
-    // user: {},
-    // error: null
 };
 
 const productsReducer = (state = initState, action) => {
@@ -20,11 +17,11 @@ const productsReducer = (state = initState, action) => {
                 ...state,
                 redeemedProducts: action.payload
             }
-        case "REDEEM_PRODUCT":
-            return {
-                ...state,
-                redeemedProducts: [...state.redeemedProducts, state.redeemedProducts.push(action.payload)]
-            }
+        // case "REDEEM_PRODUCT":
+        //     return {
+        //         ...state,
+        //         redeemedProducts: [...state.redeemedProducts, state.redeemedProducts.push(action.payload)]
+        //     }
         case "SORT_PRODUCTS":
 
             if(action.payload === "lowest") {

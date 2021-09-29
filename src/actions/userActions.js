@@ -4,7 +4,7 @@ import { statusPending, statusResolved, statusRejected, headers } from '.';
 // MIDDLEWARES
 export const fetchUser = () => {
     return (dispatch) => {
-      dispatch(statusPending)
+      dispatch(statusPending())
 
       axios.get('https://coding-challenge-api.aerolab.co/user/me', {
                 headers: headers()
@@ -12,7 +12,7 @@ export const fetchUser = () => {
             .then(res => {
                 const user = res.data
                 dispatch(getUser(user))
-                dispatch(statusResolved)
+                dispatch(statusResolved())
             })
             .catch(error => {
                 dispatch(statusRejected(error));
@@ -22,14 +22,14 @@ export const fetchUser = () => {
 
 export const fetchPoints = (num) => {
     return (dispatch) => {
-      dispatch(statusPending)
+      dispatch(statusPending())
 
       axios.post('https://coding-challenge-api.aerolab.co/user/points', { amount: num }, {
             headers: headers(),
           })
             .then(res => {
                 dispatch(getPoints(num))
-                dispatch(statusResolved)
+                dispatch(statusResolved())
             })
             .catch(error => {
                 dispatch(statusRejected(error));

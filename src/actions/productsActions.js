@@ -17,12 +17,12 @@ export const getRedeemProducts = (products) => {
     }
 }
 
-export const redeemProduct = (item) => {
-    return {
-        type: 'REDEEM_PRODUCT',
-        payload: item
-    }
-}
+// export const redeemProduct = (item) => {
+//     return {
+//         type: 'REDEEM_PRODUCT',
+//         payload: item
+//     }
+// }
 
 export const sortProducts = (sortBy) => {
     return {
@@ -34,7 +34,7 @@ export const sortProducts = (sortBy) => {
 // MIDDLEWARES
 export const fetchProducts = () => {
     return (dispatch) => {
-      dispatch(statusPending)
+      dispatch(statusPending())
 
       axios.get('https://coding-challenge-api.aerolab.co/products', {
             headers: headers(),
@@ -42,7 +42,7 @@ export const fetchProducts = () => {
         .then(response => {
             const products = response.data
             dispatch(getProducts(products))
-            dispatch(statusResolved)
+            dispatch(statusResolved())
         })
         .catch(error => {
             dispatch(statusRejected(error));
@@ -52,7 +52,7 @@ export const fetchProducts = () => {
 
 export const fetchHistory = () => {
     return (dispatch) => {
-      dispatch(statusPending)
+      dispatch(statusPending())
       
       axios.get('https://coding-challenge-api.aerolab.co/user/history', {
                 headers: headers()
@@ -60,7 +60,7 @@ export const fetchHistory = () => {
             .then(res => {
                 const products = res.data
                 dispatch(getRedeemProducts(products))
-                dispatch(statusResolved)
+                dispatch(statusResolved())
             })
             .catch(error => {
                 dispatch(statusRejected(error));
@@ -70,18 +70,18 @@ export const fetchHistory = () => {
 
 export const fetchItem = (id) => {
     return (dispatch) => {
-      dispatch(statusPending)
+      dispatch(statusPending())
 
       axios.post('https://coding-challenge-api.aerolab.co/redeem', { productId: id }, {
             headers: headers(),
           })
             .then(res => {
-                const item = res.data
-                dispatch(redeemProduct(item))
-                dispatch(statusResolved)
+                dispatch(fetchHistory)
+                dispatch(statusResolved())
             })
             .catch(error => {
                 dispatch(statusRejected(error));  
             });
     }
 }
+

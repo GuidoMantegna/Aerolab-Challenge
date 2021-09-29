@@ -15,7 +15,7 @@ const Navbar = ({ children }) => {
     }, [])
     
     const points = useSelector(state => state.userReducer.user.points)
-    const redeemProd = useSelector(state => state.userReducer.user.redeemHistory)
+    const redeemProd = useSelector(state => state.productsReducer.redeemedProducts)
 
     return (
         <>
@@ -27,7 +27,7 @@ const Navbar = ({ children }) => {
                 <FontAwesomeIcon icon="coins" className="nav-icon"/>
             </div>
             <div className="nav-icon-container">
-                {/* <label>{redeemProd.length}</label>     */}
+                <label>{redeemProd.length}</label>    
                 <FontAwesomeIcon icon="shopping-cart" className="nav-icon"/>
             </div>
         </nav>

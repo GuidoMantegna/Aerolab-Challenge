@@ -9,6 +9,7 @@ import axios from 'axios';
 const ProductCard = ({category, title, cost, img, id}) => {
 
     const points = useSelector(state => state.userReducer.user.points);
+    const status = useSelector(state => state.statusReducer.status);
     const dispatch = useDispatch()
 
     return (
@@ -25,9 +26,15 @@ const ProductCard = ({category, title, cost, img, id}) => {
                     <img src={img} alt="product"></img>
                     {
                         cost < points
-                        ? <button className="points-btn btn-5000" onClick={() => dispatch(fetchItem(id))}>BUY</button>
+                        ? 
+                        <>
+                        {status === "PENDING" && <p>LOADING 🕘</p>}
+                        {(status === "RESOLVED" || status === "IDLE") &&
+                        <button className="points-btn btn-5000" onClick={() => dispatch(fetchItem(id))}>BUY</button>
+                        }
+                        </>
                         : <> 
-                            <p>You need <strong>156</strong> more points to get it</p>
+                            <p>You need <strong>{cost - points}</strong> more points to get it</p>
                             <Link to="/user" className="points-btn btn-7500">GET POINTS</Link>
                           </>
                     }
