@@ -14,9 +14,11 @@ import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
+const devTools = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : null
+
 const composedEnhancer = compose(
   applyMiddleware(thunk, logger),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  devTools
 )
 // Create the store
 const store = createStore(
