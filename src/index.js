@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 // REDUX TOOLS
 import { createStore, applyMiddleware, compose } from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 // PROVIDER
 import { Provider } from 'react-redux'; 
 // REDUCERS
@@ -14,16 +15,18 @@ import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-const devTools = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : null
+// const devTools = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : null
 
-const composedEnhancer = compose(
-  applyMiddleware(thunk, logger),
-  devTools
-)
+// const composedEnhancer = compose(
+//   applyMiddleware(thunk, logger),
+//   devTools
+// )
 // Create the store
 const store = createStore(
   rootReducer, 
-  composedEnhancer
+  composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  )
   )
 
 ReactDOM.render(
