@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // REDUX TOOLS
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 // PROVIDER
 import { Provider } from 'react-redux'; 
@@ -21,17 +21,16 @@ import logger from 'redux-logger';
 //   applyMiddleware(thunk, logger),
 //   devTools
 // )
-// Create the store
+
 const store = createStore(
   rootReducer, 
   composeWithDevTools(
     applyMiddleware(thunk, logger)
   )
-  )
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* The Provider is a component that is going to surround the <App />, and it will receive the the data from "store" */}
     <Provider store={store}> 
       <App /> 
     </Provider> 
