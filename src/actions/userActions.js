@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { statusPending, statusResolved, statusRejected, headers } from '.';
+import { statusPending, statusResolved, statusRejected, headers, fetchHistory } from '.';
 
 // MIDDLEWARES
 export const fetchUser = () => {
@@ -26,9 +26,11 @@ export const fetchPoints = (num) => {
 
       axios.post('https://coding-challenge-api.aerolab.co/user/points', { amount: num }, {
             headers: headers(),
-          })
+            })
             .then(res => {
-                dispatch(getPoints(num))
+                const points = res.data["New Points"]
+                dispatch(getPoints(points))
+                dispatch(fetchHistory())
                 dispatch(statusResolved())
             })
             .catch(error => {
@@ -48,6 +50,6 @@ export const getUser = (user) => {
 export const getPoints = (points) => {
     return {
       type: 'GET_POINTS',
-      payload: points
+      payload: points,
     }
 }

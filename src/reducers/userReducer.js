@@ -13,10 +13,9 @@ const userReducer = (state = initState, action) => {
                 user: action.payload,
             }
         case "GET_POINTS":     
-        
             return {
                 ...state,
-                user: {...state.user, points: state.user.points += action.payload},
+                user: {...state.user, points: state.user.points = action.payload},
             }
         default: 
             return state

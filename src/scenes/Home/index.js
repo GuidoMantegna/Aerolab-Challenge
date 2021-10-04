@@ -51,19 +51,21 @@ const Home = () => {
             </div>
         </div>
         <ul className="product-list">
-            {status === "PENDING" && <p>LOADING 🕘</p>}
+            {/* {status === "PENDING" && <p>LOADING 🕘</p>}
             {status === "REJECTED" && <p>REJECTED ❌</p>}
-            {((status === "RESOLVED" || status === "IDLE") && products) && 
+            {((status === "RESOLVED" || status === "IDLE") && products) &&  */}
+            {products.length === 0 ? <p>LOADING 🕘</p> :
+
+            // {((status === "RESOLVED" || status === "IDLE") && products) && 
                 page === 1 
                 ? products.slice(0,16).map(product => {
-                        const {category, name, cost, img, _id} = product;
-                        return (
-                            <li key={_id}>
-                                <ProductCard category={category} title={name} cost={cost} img={img.url} id={_id}/>
-                            </li> 
-                        )
-                    }
-                )
+                    const {category, name, cost, img, _id} = product;
+                    return (
+                        <li key={_id}>
+                            <ProductCard category={category} title={name} cost={cost} img={img.url} id={_id}/>
+                        </li> 
+                    )
+                })
                 : products.slice(16).map(product => {
                     const {category, name, cost, img, _id} = product;
                     return (
@@ -71,8 +73,8 @@ const Home = () => {
                             <ProductCard category={category} title={name} cost={cost} img={img.url} id={_id}/>
                         </li> 
                     )
-                }
-            )}
+                })
+            }
         </ul>
         <div className="select-page-panel">            
             <p>{page === 1 ? "Page 1 (1-16)" : "Page 2 (17-32)"}</p>
