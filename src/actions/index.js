@@ -27,3 +27,23 @@ export const statusRejected = error => {
     payload: error
   }
 }
+
+export const itemPending = () => {
+  return {
+    type: "ITEM_PENDING"
+  }
+}
+
+export const itemResolved = (msg) => {
+  return {
+    type: "ITEM_RESOLVED",
+    payload: msg
+  }
+}
+
+export const itemRejected = error => {
+  return {
+    type: "ITEM_REJECTED",
+    payload: error
+  }
+}

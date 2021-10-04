@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ProductCard from '../../components/ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts, sortProducts } from '../../actions';
@@ -9,6 +9,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const products = useSelector(state => state.productsReducer.products);
     const status = useSelector(state => state.statusReducer.status);
+    const itemStatus = useSelector(state => state.statusReducer.itemStatus);
     
     useEffect(() => {
         dispatch(fetchProducts());
@@ -30,12 +31,24 @@ const Home = () => {
         
     }
 
+    const msg = useRef(null);
+    const showMsg = () => {
+        msg.current.style.opacity = "1"
+
+        setTimeout(() => {
+            msg.current.style.opacity = "0"
+        }, 4000)
+    }
     return (
         <>
-        <div className="sorting-panel">
-            <p>Sort by:</p>
-            <button className="sorting-btn" onClick={handleSortCLick}>lowest</button>
-            <button className="sorting-btn" onClick={handleSortCLick}>highest</button>
+        <div className="home-tools">
+            {(itemStatus.status === "ITEM_RESOLVED" || itemStatus.status === "ITEM_REJECTED") && showMsg()}
+            <p className="success-redeem" ref={msg}>{itemStatus.status === 'ITEM_REJECTED' ? itemStatus.error : itemStatus.msg.message}</p>
+            <div className="sorting-panel">
+                <p>Sort by:</p>
+                <button className="sorting-btn" onClick={handleSortCLick}>lowest</button>
+                <button className="sorting-btn" onClick={handleSortCLick}>highest</button>
+            </div>
         </div>
         <ul className="product-list">
             {status === "PENDING" && <p>LOADING 🕘</p>}

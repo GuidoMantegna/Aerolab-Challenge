@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import { fetchItem } from '../../actions';
+import loader from '../../assets/img/loader.gif'
 
 const ProductCard = ({category, title, cost, img, id}) => {
 
     const points = useSelector(state => state.userReducer.user.points);
     const status = useSelector(state => state.statusReducer.status);
+    const itemStatus = useSelector(state => state.statusReducer.itemStatus.status);
+
     const dispatch = useDispatch()
 
     return (
@@ -26,8 +29,9 @@ const ProductCard = ({category, title, cost, img, id}) => {
                         cost < points
                         ? 
                         <>
-                        {status === "PENDING" && <p>LOADING 🕘</p>}
-                        {(status === "RESOLVED" || status === "IDLE") &&
+                        {itemStatus === "ITEM_PENDING" && <img src={loader}></img>}
+                        {itemStatus !== "ITEM_PENDING" &&
+                        
                         <button className="points-btn btn-5000" onClick={() => dispatch(fetchItem(id))}>BUY</button>
                         }
                         </>
