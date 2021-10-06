@@ -24,21 +24,6 @@
     }
 }
 
-.success-redeem {
-    background-color: #51bf40;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin: 0 0 10px 0;
-    // opacity: 0;
-    transition: all 1s;
-    bottom: -45px;
-    right: 5%;
-    font-size: .9em;
-    font-weight: 300;
-    position: absolute;
-}
-
 .msg-hidden {
     visibility: hidden;
 }
@@ -96,27 +81,3 @@
         cursor: pointer;
     }
 }
-
-@media screen and (min-width: 768px) {
-    // .home-tools {
-    //     justify-content: flex-end;   
-    // }
-    .success-redeem {
-        margin: 0;
-        bottom: auto;
-        right: auto;
-        left: 220px
-    }
-}
-
-// @media screen and (min-width: 1024px) {
-//     .product-list {
-//         grid-template-columns: repeat(3, 1fr);
-//     }
-// }
-
-// @media screen and (min-width: 1366px) {
-//     .product-list {
-//         grid-template-columns: repeat(4, 1fr);
-//     }
-// }

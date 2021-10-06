@@ -1,21 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts, fetchUser, sortProducts, postIdle } from "../../actions";
+import { fetchProducts, sortProducts } from "../../actions";
 import "./styles.scss";
 import PageLoading from "../../components/PageLoading";
 import PageError from "../../components/PageError";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.productsReducer.products);
-  const status = useSelector((state) => state.statusReducer.status);
-  const statusError = useSelector((state) => state.statusReducer.error);
-  const postStatus = useSelector((state) => state.statusReducer.postStatus);
+  const dispatch = useDispatch(),
+  products = useSelector((state) => state.productsReducer.products),
+  status = useSelector((state) => state.statusReducer.status),
+  statusError = useSelector((state) => state.statusReducer.error);
 
   useEffect(() => {
     dispatch(fetchProducts());
-    dispatch(fetchUser());
   }, [dispatch]);
 
   const [page, setPage] = useState(1);

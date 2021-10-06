@@ -12,10 +12,8 @@ const Navbar = () => {
     dispatch(fetchUser());
   }, [dispatch]);
 
-  const points = useSelector((state) => state.userReducer.user.points);
-  const redeemProd = useSelector(
-    (state) => state.userReducer.user.redeemHistory
-  );
+  const user = useSelector((state) => state.userReducer.user);
+  const {points, name, redeemHistory} = user;
   const postStatus = useSelector((state) => state.statusReducer.postStatus);
 
   return (
@@ -23,17 +21,17 @@ const Navbar = () => {
       <nav>
         <div className="logo"></div>
         {postStatus.status === "POST_RESOLVED" && (
-          <p className="success-redeem">{postStatus.msg}</p>
+          <p className="post-msg">{postStatus.msg}</p>
         )}
         <Link to="/user" className="nav-link">
-          Profile
+          {name}
         </Link>
         <div className="nav-icon-container">
           <label>{points}</label>
           <FontAwesomeIcon icon="coins" className="nav-icon" />
         </div>
         <div className="nav-icon-container">
-          <label>{redeemProd && redeemProd.length}</label>
+          <label>{redeemHistory && redeemHistory.length}</label>
           <FontAwesomeIcon icon="shopping-cart" className="nav-icon" />
         </div>
       </nav>

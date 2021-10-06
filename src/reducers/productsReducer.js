@@ -15,11 +15,6 @@ const productsReducer = (state = initState, action) => {
                 ...state,
                 redeemedProducts: action.payload
             }
-        // case "REDEEM_PRODUCT":
-        //     return {
-        //         ...state,
-        //         redeemedProducts: [...state.redeemedProducts, state.redeemedProducts.push(action.payload)]
-        //     }
         case "SORT_PRODUCTS":
 
             if(action.payload === "lowest") {
