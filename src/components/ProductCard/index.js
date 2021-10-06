@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import { fetchItem } from '../../actions';
 import loader from '../../assets/img/loader.gif'
+import ButtonLoading from '../ButtonLoading';
 
 const ProductCard = ({category, title, cost, img, id}) => {
 
     const points = useSelector(state => state.userReducer.user.points);
     const status = useSelector(state => state.statusReducer.status);
-    const itemStatus = useSelector(state => state.statusReducer.itemStatus.status);
+    const postStatus = useSelector(state => state.statusReducer.postStatus.status);
 
     const dispatch = useDispatch()
 
@@ -29,8 +30,8 @@ const ProductCard = ({category, title, cost, img, id}) => {
                         cost < points
                         ? 
                         <>
-                        {itemStatus === "ITEM_PENDING" && <img src={loader}></img>}
-                        {itemStatus !== "ITEM_PENDING" &&
+                        {postStatus === "POST_PENDING" && <ButtonLoading/>}
+                        {postStatus !== "POST_PENDING" &&
                         
                         <button className="points-btn btn-5000" onClick={() => dispatch(fetchItem(id))}>BUY</button>
                         }

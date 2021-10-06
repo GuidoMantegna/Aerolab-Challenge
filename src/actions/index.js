@@ -28,22 +28,28 @@ export const statusRejected = error => {
   }
 }
 
-export const itemPending = () => {
+export const postIdle = () => {
   return {
-    type: "ITEM_PENDING"
+    type: "POST_IDLE"
   }
 }
 
-export const itemResolved = (msg) => {
+export const postPending = () => {
   return {
-    type: "ITEM_RESOLVED",
+    type: "POST_PENDING"
+  }
+}
+
+export const postResolved = (msg) => {
+  return {
+    type: "POST_RESOLVED",
     payload: msg
   }
 }
 
-export const itemRejected = error => {
+export const postRejected = error => {
   return {
-    type: "ITEM_REJECTED",
+    type: "POST_REJECTED",
     payload: error
   }
 }

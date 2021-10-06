@@ -1,8 +1,8 @@
 const initState = {
     status: 'IDLE',
     error: null,
-    itemStatus: {
-        status: 'ITEM_IDLE',
+    postStatus: {
+        status: 'POST_IDLE',
         error: null,
         msg: ''
     }
@@ -26,24 +26,25 @@ const statusReducer = (state = initState, action) => {
                 status: action.type,
                 error: action.payload,
             }
-        case "ITEM_PENDING":     
+        case "POST_PENDING":     
             return {
                 ...state,
-                itemStatus: {error: null, status: action.type, msg: ''}
+                postStatus: {error: null, status: action.type, msg: ''}
             }
-        case "ITEM_RESOLVED":     
+        case "POST_RESOLVED":     
             return {
                 ...state,
-                itemStatus: {error: null, status: action.type, msg: action.payload}
+                postStatus: {error: null, status: action.type, msg: action.payload}
             }
-        case "ITEM_REJECTED":     
+        case "POST_REJECTED":     
             return {
                 ...state,
-                itemStatus: {
-                    status: action.type,
-                    error: action.payload,
-                    msg: ''
-                }
+                postStatus: {status: action.type, error: action.payload, msg: ''}
+            }
+        case "POST_IDLE":     
+            return {
+                ...state,
+                postStatus: {error: null, status: action.type, msg: ''}
             }
         default: 
             return state

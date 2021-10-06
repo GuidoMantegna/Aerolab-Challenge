@@ -6,8 +6,8 @@ const RedeemedProd = ({ img, name, cost, id }) => {
         <>
         <li className="redeemed-prod" key={id}>
             <img src={img} alt="product"></img>
-            <h5 className="prod-title">{name}</h5>
-            <h5 className="prod-cost">{cost}</h5>
+            <h4 className="prod-title">{name}</h4>
+            <h4 className="prod-cost">{cost}</h4>
         </li>
         </>
     );

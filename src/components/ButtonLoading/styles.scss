@@ -1,0 +1,23 @@
+.btn-loading {
+    padding: 10px 15px;
+    margin: 5px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(120, 120, 120);
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    opacity: .5;
+    min-width: 75px;
+    cursor: default;
+    animation: beat 2s infinite;
+  }
+
+  @keyframes beat {
+    50% {
+      opacity: 1;
+      letter-spacing: 3px;
+      font-weight: bold;
+      transform: scale(1.05);
+    }
+  }

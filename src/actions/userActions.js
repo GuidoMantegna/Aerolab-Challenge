@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { statusPending, statusResolved, statusRejected, headers, fetchHistory } from '.';
+import { postPending, postResolved, postRejected, headers, fetchHistory, postIdle } from '.';
 
 // MIDDLEWARES
 export const fetchUser = () => {
     return (dispatch) => {
-      dispatch(statusPending())
+    //   dispatch(statusPending())
 
       axios.get('https://coding-challenge-api.aerolab.co/user/me', {
                 headers: headers()
@@ -12,29 +12,32 @@ export const fetchUser = () => {
             .then(res => {
                 const user = res.data
                 dispatch(getUser(user))
-                dispatch(statusResolved())
+                // dispatch(statusResolved())
             })
             .catch(error => {
-                dispatch(statusRejected(error));
+                // dispatch(statusRejected(error));
             });
     }
 }
 
 export const fetchPoints = (num) => {
     return (dispatch) => {
-      dispatch(statusPending())
+      dispatch(postPending())
 
       axios.post('https://coding-challenge-api.aerolab.co/user/points', { amount: num }, {
             headers: headers(),
             })
             .then(res => {
                 const points = res.data["New Points"]
+                const msg = res.data["message"]
                 dispatch(getPoints(points))
                 dispatch(fetchHistory())
-                dispatch(statusResolved())
+                dispatch(fetchUser())
+                dispatch(postResolved(msg))
+                dispatch(postIdle())
             })
             .catch(error => {
-                dispatch(statusRejected(error));
+                dispatch(postRejected(error));
             });
     }
 }

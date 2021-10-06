@@ -1,5 +1,14 @@
 import axios from 'axios';
-import { statusPending, statusResolved, statusRejected, itemPending, itemRejected, itemResolved, headers, fetchUser } from '.';
+import { 
+    statusPending, 
+    statusResolved, 
+    statusRejected, 
+    postPending, 
+    postRejected, 
+    postResolved, 
+    postIdle,
+    headers, 
+    fetchUser } from '.';
 
 // ACTIONS
 export const getProducts = (products, qty) => {
@@ -70,19 +79,20 @@ export const fetchHistory = () => {
 
 export const fetchItem = (id) => {
     return (dispatch) => {
-      dispatch(itemPending())
+      dispatch(postPending())
 
       axios.post('https://coding-challenge-api.aerolab.co/redeem', { productId: id }, {
             headers: headers(),
           })
             .then(res => {
                 const msg = res.data
-                dispatch(fetchHistory())
+                // dispatch(fetchHistory())
                 dispatch(fetchUser())
-                dispatch(itemResolved(msg))
+                dispatch(postResolved(msg))
+                setTimeout(() => dispatch(postIdle()), 3000)
             })
             .catch(error => {
-                dispatch(itemRejected(error));  
+                dispatch(postRejected(error));  
             });
     }
 }

@@ -80,6 +80,18 @@
   }
   .btn-disabled {
     opacity: .5;
+    animation: beat 2s infinite;
+    min-width: 60px;
+    cursor: default;
+  }
+
+  @keyframes beat {
+    50% {
+      opacity: 1;
+      letter-spacing: 3px;
+      font-weight: bold;
+      transform: scale(1.1);
+    }
   }
 
 @media screen and (min-width: 768px) {

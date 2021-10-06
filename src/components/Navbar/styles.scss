@@ -9,6 +9,10 @@ nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: sticky;
+    top: 7%;
+    background-color: white;
+    z-index: 1;
 }
 .logo {
     position: absolute;
@@ -72,6 +76,7 @@ nav {
 @media screen and (min-width: 768px) {
     nav {
         padding-right: 30px;
+        top: 15%;
     }
     .logo {
         left: 50px;
