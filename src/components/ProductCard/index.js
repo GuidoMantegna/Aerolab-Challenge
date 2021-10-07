@@ -33,7 +33,7 @@ const ProductCard = ({ category, title, cost, img, id }) => {
                     className="points-btn btn-5000"
                     onClick={() => dispatch(fetchItem(id))}
                   >
-                    BUY
+                    REDEEM
                   </button>
                 )}
               </>
