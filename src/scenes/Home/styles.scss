@@ -1,83 +1,83 @@
-@use '../../assets/styles/colors';
+@use "../../assets/styles/colors";
 
 .home-tools {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    margin: 30px 0 10px 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin: 30px 0 10px 0;
 }
 .sorting-panel {
-    display: flex;
-    align-items: center;
-    padding: 10px 10%;
-    color: colors.$title;
+  display: flex;
+  align-items: center;
+  padding: 10px 10%;
+  color: colors.$title;
 
-    p {
-        margin: 0 5px;
-    }
-    button {
-        color: white;
-        border: none;  
-        margin: 0 5px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  p {
+    margin: 0 5px;
+  }
+  button {
+    color: white;
+    border: none;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 .msg-hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .sorting-btn {
-    background-color: colors.$purple;
-    font-weight: 300;
-    padding: 7px;
-    transition: all .25s;
+  background-color: colors.$purple;
+  font-weight: 300;
+  padding: 7px;
+  transition: all 0.25s;
 }
 .btn-active {
-    background-color: colors.$light-blue;
-    text-shadow: 1px 2px colors.$title;
-    padding: 10px;
-    font-weight: bold;
-    box-shadow: 3px 2px #0097ce;
-    letter-spacing: 1px;
+  background-color: colors.$light-blue;
+  text-shadow: 1px 2px colors.$title;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: 3px 2px #0097ce;
+  letter-spacing: 1px;
 }
 
 .product-list {
-    padding: 20px 5%;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  padding: 20px 5%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 
-    li {
-        display: flex;
-        justify-content: center;
-        margin: 10px;
-    }
+  li {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
 }
 
 .select-page-panel {
-    color: colors.$title;
-    padding: 20px 15%;
-    display: flex;
-    justify-content: flex-end;
-    
-    p {
-        margin: 10px;
-    }
+  color: colors.$title;
+  padding: 20px 15%;
+  display: flex;
+  justify-content: flex-end;
 
-    button {
-        background-color: white;
-        color: #a08e67;
-        font-size: 1.2em;
-        margin-left: 10px;
-        border: 1px solid;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-    }
+  p {
+    margin: 10px;
+  }
+
+  button {
+    background-color: white;
+    color: #a08e67;
+    font-size: 1.2em;
+    margin-left: 10px;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 }

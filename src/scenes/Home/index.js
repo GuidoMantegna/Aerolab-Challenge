@@ -8,9 +8,9 @@ import PageError from "../../components/PageError";
 
 const Home = () => {
   const dispatch = useDispatch(),
-  products = useSelector((state) => state.productsReducer.products),
-  status = useSelector((state) => state.statusReducer.status),
-  statusError = useSelector((state) => state.statusReducer.error);
+    products = useSelector((state) => state.productsReducer.products),
+    status = useSelector((state) => state.statusReducer.status),
+    statusError = useSelector((state) => state.statusReducer.error);
 
   useEffect(() => {
     dispatch(fetchProducts());

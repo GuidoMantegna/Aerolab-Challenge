@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-const ProductCard = ({ children }) => {
+const Layout = ({ children }) => {
     return (
         <>
         <header></header>
@@ -10,4 +10,4 @@ const ProductCard = ({ children }) => {
     );
 };
 
-export default ProductCard;
+export default Layout;

@@ -4,7 +4,6 @@ import {
   postResolved,
   postRejected,
   headers,
-  fetchHistory,
   postIdle,
 } from ".";
 
@@ -41,8 +40,6 @@ export const fetchPoints = (num) => {
         const points = res.data["New Points"];
         const msg = res.data.message;
         dispatch(getPoints(points));
-        dispatch(fetchHistory());
-        dispatch(fetchUser());
         dispatch(postResolved(msg));
         setTimeout(() => dispatch(postIdle()), 3000);
       })

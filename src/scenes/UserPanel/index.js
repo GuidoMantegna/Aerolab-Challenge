@@ -75,12 +75,13 @@ const UserPanel = () => {
         {(status === "IDLE" || status === "RESOLVED") &&
           redeemHistory.map((item) => {
             return (
-              <RedeemedProd
-                img={item.img.url}
-                name={item.name}
-                cost={item.cost}
-                id={item._id}
-              />
+              <li className="redeemed-prod" key={item.createDate}>
+                <RedeemedProd
+                  img={item.img.url}
+                  name={item.name}
+                  cost={item.cost}
+                />
+              </li>
             );
           })}
       </ul>
